@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EGFR Docking + MD — Curcumin, Doxorubicin, Erlotinib, Gefitinib</title>
+<style>
+  :root{
+    --navy:#1F3B57; --teal:#2E8B8B; --rust:#B5651D; --plum:#6A4C93;
+    --ink:#1c2530; --muted:#5b6672; --bg:#f7f8fa; --card:#ffffff; --border:#e3e7eb;
+    --good:#1f8a5f; --warn:#b5651d;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+  header{background:linear-gradient(135deg,var(--navy),#2a4f74);color:#fff;padding:2.4rem 1.5rem 2rem}
+  header .wrap{max-width:1000px;margin:0 auto}
+  header h1{margin:0 0 .4rem;font-size:1.7rem}
+  header p{margin:0;color:#cfe0ee;font-size:.95rem;max-width:720px}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 1.5rem}
+  .links{margin-top:1rem;display:flex;gap:.8rem;flex-wrap:wrap}
+  .links a{color:#fff;background:rgba(255,255,255,.15);padding:.4rem .9rem;border-radius:6px;text-decoration:none;font-size:.85rem;border:1px solid rgba(255,255,255,.3)}
+  .links a:hover{background:rgba(255,255,255,.25)}
+  section{padding:2rem 0}
+  h2{font-size:1.2rem;color:var(--navy);border-bottom:1px solid var(--border);padding-bottom:.5rem}
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1rem}
+  .stat{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.2rem}
+  .stat .label{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+  .stat .value{font-size:1.5rem;font-weight:700;color:var(--navy);margin-top:.2rem}
+  .stat .sub{font-size:.8rem;color:var(--muted);margin-top:.2rem}
+  table{width:100%;border-collapse:collapse;margin-top:1rem;background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+  th,td{padding:.65rem .8rem;text-align:left;font-size:.88rem;border-bottom:1px solid var(--border)}
+  th{background:#eef1f5;color:var(--navy);font-weight:600}
+  tr:last-child td{border-bottom:none}
+  figure{margin:1.2rem 0 0;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem}
+  figure img{width:100%;border-radius:6px;display:block}
+  figcaption{font-size:.82rem;color:var(--muted);margin-top:.6rem}
+  .steps{counter-reset:step;list-style:none;padding:0;margin-top:1rem;display:grid;gap:.6rem}
+  .steps li{counter-increment:step;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.7rem .9rem .7rem 2.6rem;position:relative;font-size:.9rem}
+  .steps li::before{content:counter(step);position:absolute;left:.8rem;top:50%;transform:translateY(-50%);width:1.5rem;height:1.5rem;border-radius:50%;background:var(--teal);color:#fff;font-size:.78rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .callout{background:#fff7ec;border:1px solid #f0d9b5;border-left:4px solid var(--warn);border-radius:8px;padding:1rem 1.2rem;margin-top:1.2rem;font-size:.9rem}
+  .callout strong{color:var(--warn)}
+  .bugs{display:grid;gap:.7rem;margin-top:1rem}
+  .bug{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.8rem 1rem;font-size:.87rem}
+  .bug .tag{display:inline-block;background:#e9f3f1;color:var(--good);font-size:.72rem;font-weight:700;padding:.15rem .5rem;border-radius:4px;margin-bottom:.35rem;text-transform:uppercase;letter-spacing:.03em}
+  footer{padding:2rem 1.5rem 3rem;color:var(--muted);font-size:.85rem;text-align:center}
+  code{background:#eef1f5;padding:.1rem .35rem;border-radius:4px;font-size:.85em}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>EGFR Docking + MD — Cancer Target Screening</h1>
+    <p>AutoDock Vina docking of curcumin, doxorubicin, erlotinib, and gefitinib against the EGFR tyrosine kinase domain (PDB 1M17), cross-checked with a short GROMACS molecular dynamics run on the top hit.</p>
+    <div class="links">
+      <a href="https://github.com/sareer555/egfr-docking-md">GitHub Repository</a>
+      <a href="https://sareer555.github.io/curcumin-doxorubicin-GO-DFT/">Project 1 — DFT Study</a>
+      <a href="https://sareer555.github.io/curcumin-GO-MD-GROMACS/">Project 2 — MD Study</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section>
+  <h2>Docking results</h2>
+  <div class="stat-grid">
+    <div class="stat"><div class="label">Doxorubicin</div><div class="value">-10.49</div><div class="sub">kcal/mol (top pose)</div></div>
+    <div class="stat"><div class="label">Gefitinib</div><div class="value">-9.08</div><div class="sub">kcal/mol (top pose)</div></div>
+    <div class="stat"><div class="label">Erlotinib</div><div class="value">-7.93</div><div class="sub">kcal/mol · re-docking RMSD 1.93 Å</div></div>
+    <div class="stat"><div class="label">Curcumin</div><div class="value">-7.82</div><div class="sub">kcal/mol (top pose)</div></div>
+  </div>
+  <table>
+    <tr><th>Ligand</th><th>Top Vina score (kcal/mol)</th><th>Role</th></tr>
+    <tr><td>Doxorubicin</td><td>-10.49</td><td>Reference chemotherapeutic</td></tr>
+    <tr><td>Gefitinib</td><td>-9.08</td><td>Approved EGFR inhibitor (reference)</td></tr>
+    <tr><td>Erlotinib</td><td>-7.93</td><td>Approved EGFR inhibitor — used for re-docking validation</td></tr>
+    <tr><td>Curcumin</td><td>-7.82</td><td>Natural-product candidate — carried through to MD</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>30 ps production MD — curcumin vs. EGFR (PBC-corrected)</h2>
+  <div class="stat-grid">
+    <div class="stat"><div class="label">Closest contact</div><div class="value">2.14 Å</div><div class="sub">mean ± 0.12 Å (range 1.84–2.36 Å)</div></div>
+    <div class="stat"><div class="label">Center-of-mass distance</div><div class="value">1.183 nm</div><div class="sub">mean ± 0.022 nm (range 1.137–1.236 nm)</div></div>
+    <div class="stat"><div class="label">Curcumin RMSD</div><div class="value">1.29 Å</div><div class="sub">mean ± 0.46 Å (0.00 → 2.06 Å)</div></div>
+    <div class="stat"><div class="label">Radius of gyration</div><div class="value">4.83 Å</div><div class="sub">mean ± 0.30 Å (4.22 → 5.22 Å)</div></div>
+  </div>
+  <figure>
+    <img src="production_analysis.png" alt="4-panel production MD analysis: contact distance, COM distance, RMSD, radius of gyration">
+    <figcaption>Contact distance and center-of-mass distance stay flat and stable across the 30 ps window; curcumin's own RMSD and radius of gyration show moderate, normal conformational relaxation for a flexible ligand.</figcaption>
+  </figure>
+  <div class="callout">
+    <strong>Honest scope:</strong> 30 ps is ~1/16th the length of the earlier graphene-oxide MD study (500 ps) in this portfolio, and far short of literature-scale protein-ligand runs (10s–100s of ns). This demonstrates the docked pose holds under short-timescale motion — it is not a long-term thermodynamic stability claim. Limited by compute budget: this ~114,573-atom solvated system runs at ~2.15–2.2 ns/day, versus ~12–18 ns/day for the earlier, much smaller (~14,000-atom) system.
+  </div>
+</section>
+
+<section>
+  <h2>Pipeline</h2>
+  <ol class="steps">
+    <li>Fetch EGFR kinase domain structure (PDB 1M17, co-crystallized with erlotinib) and extract the crystallographic ligand pocket coordinates.</li>
+    <li>Prepare receptor (strip waters/ligand, add hydrogens at pH 7.4, convert to rigid PDBQT) and four ligands (generate 3D from SMILES, protonate).</li>
+    <li>Dock all four ligands into the real ATP-binding pocket with AutoDock Vina; validate the protocol by re-docking erlotinib and comparing to its known crystal pose (1.93 Å RMSD).</li>
+    <li>Build a GROMACS topology for curcumin bound to EGFR using a real validated force field (AMBER99SB-ILDN), fixing a missing-loop chain break, an atom-order mismatch, a silent global atomtype collision, and a position-restraint indexing bug along the way.</li>
+    <li>Solvate, neutralize, energy-minimize, and equilibrate (NVT then NPT) the 114,573-atom system.</li>
+    <li>Run a 30 ps production simulation; correct a periodic-boundary trajectory artifact before analysis.</li>
+    <li>Analyze contact distance, center-of-mass distance, ligand RMSD, and radius of gyration to assess short-timescale binding stability.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Bugs found and fixed along the way</h2>
+  <div class="bugs">
+    <div class="bug"><span class="tag">Fixed</span><br><strong>Missing-loop "Long Bond" warning</strong> — residues 965–976 are genuinely disordered in the 1M17 crystal; a <code>TER</code> record marks the real chain break instead of letting pdb2gmx bond across it.</div>
+    <div class="bug"><span class="tag">Fixed</span><br><strong>Atom-order mismatch</strong> — curcumin's docked pose (29 united-atom PDBQT atoms) didn't match its all-atom topology (47 atoms); fixed with restored hydrogens + RDKit substructure-match reordering, validated by element identity and bond-length sanity checks.</div>
+    <div class="bug"><span class="tag">Fixed</span><br><strong>Silent global atomtype collision</strong> — curcumin's custom "H" type collided with AMBER99SB-ILDN's real "H" type, a conflict that could have silently altered van der Waals behavior for every polar hydrogen in the protein. Renamed to "H_curc"; confirmed by grompp's warning count dropping to zero.</div>
+    <div class="bug"><span class="tag">Fixed</span><br><strong>Position-restraint indexing bug</strong> — restraints used global atom indices instead of the local indices required inside curcumin's own topology block.</div>
+    <div class="bug"><span class="tag">Fixed</span><br><strong>Periodic-boundary trajectory artifact</strong> — an uncorrected trajectory gave a physically impossible 11.2 nm center-of-mass distance in a 9.4 nm box; fixed with <code>gmx trjconv -pbc mol -center</code> before any spatial analysis.</div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  Sareer Ahmad — Computational Chemistry &amp; Cheminformatics ·
+  <a href="https://www.upwork.com/freelancers/~01492d4cae89952573">Upwork</a> ·
+  <a href="https://github.com/sareer555">GitHub</a>
+</footer>
+
+</body>
+</html>
